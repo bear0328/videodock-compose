@@ -1,6 +1,6 @@
 # 91video 部署包
 
-91porn.com 视频下载 + Web 播放。Docker 镜像公开，源码闭源（私有仓库）。
+91porn.com 视频下载 + Web 播放，单个 Docker 容器，开箱即用。
 
 ## 快速开始
 
