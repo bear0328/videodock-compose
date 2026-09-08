@@ -4,17 +4,17 @@
 # Usage: docker compose pull -f compose.yaml && docker compose up -d
 services:
   videodock:
-    image: bear0328/videodock:latest # public repo, no login required
+    image: bear0328/videodock:latest  # public repo, no login required
     container_name: videodock
     ports:
-      - "8620:8620" # web UI (download + playback)
+      - "8620:8620"  # web UI (download + playback)
     volumes:
-      - /mnt/user/media/ori/91:/data # media library
+      - /mnt/user/media/ori/91:/data  # media library
       #   (change to your own path)
-      - /mnt/user/appdata/videodock/data:/appdata # app data (tasks etc.)
+      - /mnt/user/appdata/videodock/data:/appdata  # app data (tasks etc.)
     environment:
-      - PAGE_PROXY=http://192.168.6.111:7890 # proxy for pages (REQUIRED)
-      - APPDATA=/appdata # app data dir
+      - PAGE_PROXY=http://192.168.6.111:7890  # proxy for pages (REQUIRED)
+      - APPDATA=/appdata  # app data dir
     # - CDN_PROXY=http://...  # proxy for video downloads, follows
     #   PAGE_PROXY by default; "" forces direct
     # - YTDP_PROXY=http://...  # proxy for the generic engine (yt-dlp),
