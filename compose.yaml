@@ -9,14 +9,16 @@ services:
     ports:
       - "8620:8620" # web UI (download + playback)
     volumes:
-      - /mnt/user/media/ori/91:/data # media library
-      #   (change to your own path)
+      - /mnt/user/media/ori/91:/adult # 91video library (change to your path)
+      - /mnt/user/downloads/youtube:/general # general-site library (yt-dlp)
       - /mnt/user/appdata/videodock/data:/appdata # app data (tasks etc.)
     environment:
+      - VIDEODB_DATA=/ # videos land in /adult or /general
+      #   (auto-classified by the app)
       - PAGE_PROXY=http://192.168.6.111:7890 # proxy for pages (REQUIRED)
       - APPDATA=/appdata # app data dir
-    # - CDN_PROXY=http://...  # proxy for video downloads, follows
-    #   PAGE_PROXY by default; "" forces direct
+    # - CDN_PROXY=http://...  # proxy for 91 CDN video downloads,
+    #   follows PAGE_PROXY by default; "" forces direct
     # - YTDP_PROXY=http://...  # proxy for the generic engine (yt-dlp),
     #   follows PAGE_PROXY by default
     # - YTDP_COOKIES=/appdata/cookies.txt  # Netscape cookies for sites
