@@ -1,7 +1,7 @@
 ---
 # videodock deployment
 # (live copy on Unraid: /mnt/user/appdata/videodock/compose.yaml)
-# Usage: docker compose pull -f compose.yaml && docker compose up -d
+# Usage: docker compose -f compose.yaml pull && docker compose -f compose.yaml up -d
 services:
   videodock:
     image: bear0328/videodock:latest # public repo, no login required
