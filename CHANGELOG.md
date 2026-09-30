@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.2.5 — 2026-10-01
+
+### Added
+
+- **Resolution badge on thumbnails**: video resolution (4K/2.5K/1080p) shown in bottom-right corner of poster thumbnails. Backend extracts from `video.info.json` or falls back to ffprobe for older videos.
+
 ## v2.1.0 — 2026-07-20
 
 ### Features
