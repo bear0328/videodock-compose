@@ -1,5 +1,4 @@
 ---
-# videodock deployment (live)
 services:
   videodock:
     image: bear0328/videodock:latest
@@ -12,6 +11,6 @@ services:
       - /mnt/user/appdata/videodock/data:/appdata
     environment:
       - VIDEODB_DATA=/
-      - PAGE_PROXY=http://192.168.6.111:7890
       - APPDATA=/appdata
+      - PAGE_PROXY=http://192.168.6.111:7890
     restart: unless-stopped
