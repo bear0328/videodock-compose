@@ -10,11 +10,11 @@
 </style>
 <div id="vd-lang-switch">
   <span class="vd-label">语言</span>
-  <button type="button" id="vd-btn-en" class="active" onclick="vdSetLang('en')">🇬🇧 English</button>
-  <button type="button" id="vd-btn-zh" onclick="vdSetLang('zh')">🇨🇳 中文</button>
+  <button type="button" class="vd-btn active" data-lang="en" onclick="vdSetLang('en')">🇬🇧 English</button>
+  <button type="button" class="vd-btn" data-lang="zh" onclick="vdSetLang('zh')">🇨🇳 中文</button>
 </div>
 
-<div id="vd-en">
+<div class="vd-lang-en">
 
 Deployment presets for [videodock](https://github.com/bear0328/videodock) — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
@@ -148,7 +148,7 @@ with the same port / volume / environment settings as above.
 
 </div>
 
-<div id="vd-zh" style="display: none;">
+<div class="vd-lang-zh" style="display: none;">
 
 # videodock-compose（中文）
 
@@ -275,14 +275,14 @@ docker compose up -d -f compose.yaml
 <script>
 (function () {
   function apply(lang) {
-    var en = document.getElementById('vd-en');
-    var zh = document.getElementById('vd-zh');
+    var en = document.getElementsByClassName('vd-lang-en')[0];
+    var zh = document.getElementsByClassName('vd-lang-zh')[0];
     if (en) en.style.display = lang === 'zh' ? 'none' : '';
     if (zh) zh.style.display = lang === 'zh' ? '' : 'none';
-    var be = document.getElementById('vd-btn-en');
-    var bz = document.getElementById('vd-btn-zh');
-    if (be) be.classList.toggle('active', lang === 'en');
-    if (bz) bz.classList.toggle('active', lang === 'zh');
+    var btns = document.getElementsByClassName('vd-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].classList.toggle('active', btns[i].getAttribute('data-lang') === lang);
+    }
     try { localStorage.setItem('vd-lang', lang); } catch (e) {}
   }
   window.vdSetLang = function (lang) { apply(lang); };
