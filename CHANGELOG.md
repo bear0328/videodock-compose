@@ -5,6 +5,7 @@
 ### Docs
 
 - **Discoverability**: bilingual (EN/CN) README enriched with supported-sites keywords (91porn, Pornhub, Bilibili, Douyin, YouTube, TikTok, X/Twitter, yt-dlp); public repo tagged with self-hosted / media-server / unraid / video-downloader topics for GitHub search.
+- **README language switcher — desktop-only**: the EN/CN toggle (`data-vd-switch` / `vdSetLang` + inline `<script>`, same implementation as `videodock`) works on desktop `github.com`, but **not on mobile `github.com` or the GitHub app** — the mobile renderer strips inline HTML tags (keeps text), so the `<style>` block shows as literal CSS text and the buttons are unclickable plain text. Documented as a known GitHub mobile-renderer limitation; no code change planned.
 
 ## v2.2.5 — 2026-10-01
 
