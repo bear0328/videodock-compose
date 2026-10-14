@@ -1,20 +1,21 @@
 # videodock-compose
 
 <style>
-#vd-lang-switch { display: inline-flex; gap: 4px; align-items: center; margin: 8px 0 18px; padding: 4px; border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa; }
-#vd-lang-switch .vd-label { font-size: 13px; color: #57606a; margin: 0 4px 0 2px; }
-#vd-lang-switch button { border: 0; background: transparent; padding: 6px 16px; font-size: 14px; line-height: 1.4; cursor: pointer; border-radius: 5px; color: #24292f; }
-#vd-lang-switch button:hover { background: #eaeef2; }
-#vd-lang-switch button.active { background: #1f883d; color: #fff; }
-#vd-lang-switch button.active:hover { background: #1a7f37; }
+[data-vd-switch] { display: inline-flex; gap: 4px; align-items: center; margin: 8px 0 18px; padding: 4px; border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa; }
+[data-vd-switch] [data-vd-label] { font-size: 13px; color: #57606a; margin: 0 4px 0 2px; }
+[data-vd-switch] button { border: 0; background: transparent; padding: 6px 16px; font-size: 14px; line-height: 1.4; cursor: pointer; border-radius: 5px; color: #24292f; }
+[data-vd-switch] button:hover { background: #eaeef2; }
+[data-vd-switch] button.active { background: #1f883d; color: #fff; }
+[data-vd-switch] button.active:hover { background: #1a7f37; }
+[data-vd-section="zh"] { display: none; }
 </style>
-<div id="vd-lang-switch">
-  <span class="vd-label">语言</span>
-  <button type="button" class="vd-btn active" data-lang="en" onclick="vdSetLang('en')">🇬🇧 English</button>
-  <button type="button" class="vd-btn" data-lang="zh" onclick="vdSetLang('zh')">🇨🇳 中文</button>
+<div data-vd-switch>
+  <span data-vd-label>语言</span>
+  <button type="button" data-vd-lang="en" onclick="vdSetLang('en')">🇬🇧 English</button>
+  <button type="button" data-vd-lang="zh" onclick="vdSetLang('zh')">🇨🇳 中文</button>
 </div>
 
-<div class="vd-lang-en">
+<div data-vd-section="en">
 
 Deployment presets for [videodock](https://github.com/bear0328/videodock) — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
@@ -148,7 +149,7 @@ with the same port / volume / environment settings as above.
 
 </div>
 
-<div class="vd-lang-zh" style="display: none;">
+<div data-vd-section="zh">
 
 # videodock-compose（中文）
 
@@ -275,13 +276,13 @@ docker compose up -d -f compose.yaml
 <script>
 (function () {
   function apply(lang) {
-    var en = document.getElementsByClassName('vd-lang-en')[0];
-    var zh = document.getElementsByClassName('vd-lang-zh')[0];
-    if (en) en.style.display = lang === 'zh' ? 'none' : '';
-    if (zh) zh.style.display = lang === 'zh' ? '' : 'none';
-    var btns = document.getElementsByClassName('vd-btn');
+    var en = document.querySelector('[data-vd-section="en"]');
+    var zh = document.querySelector('[data-vd-section="zh"]');
+    if (en) en.style.display = lang === 'en' ? 'block' : 'none';
+    if (zh) zh.style.display = lang === 'zh' ? 'block' : 'none';
+    var btns = document.querySelectorAll('[data-vd-lang]');
     for (var i = 0; i < btns.length; i++) {
-      btns[i].classList.toggle('active', btns[i].getAttribute('data-lang') === lang);
+      btns[i].classList.toggle('active', btns[i].getAttribute('data-vd-lang') === lang);
     }
     try { localStorage.setItem('vd-lang', lang); } catch (e) {}
   }
