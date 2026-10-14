@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased
+
+### Docs
+
+- **Discoverability**: bilingual (EN/CN) README enriched with supported-sites keywords (91porn, Pornhub, Bilibili, Douyin, YouTube, TikTok, X/Twitter, yt-dlp); public repo tagged with self-hosted / media-server / unraid / video-downloader topics for GitHub search.
+
 ## v2.2.5 — 2026-10-01
 
 ### Added

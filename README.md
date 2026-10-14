@@ -3,6 +3,8 @@
 Deployment presets for [videodock](https://github.com/bear0328/videodock) — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
 
+**Supported sites:** 91porn · Pornhub · Bilibili · Douyin(抖音) · YouTube · TikTok · X/Twitter and 500+ more via yt-dlp — a self-hosted media server & video downloader for Unraid.
+
 - **91-series** (91porn / bilithings, …) via a dedicated adapter — poster + metadata included
 - **YouTube, Bilibili, TikTok, X/Twitter and 1000+ other sites** via the built-in yt-dlp engine
 - **No database, no workers**: one container with web UI, task queue, and playback
@@ -133,7 +135,9 @@ with the same port / volume / environment settings as above.
 [videodock](https://github.com/bear0328/videodock) 部署预设——多站点视频下载 + Web 播放平台,
 单容器(为 Unraid 设计)。
 
-- **91 系**(91porn / bilithings,…)走专用适配器,自带海报 + 元数据
+**支持站点:** 91porn · Pornhub · Bilibili · 抖音(Douyin) · YouTube · TikTok · X/Twitter,以及通过 yt-dlp 支持的 500+ 站点——一个自托管媒体服务器与视频下载器,为 Unraid 设计。
+
+- **91 系(91porn / bilithings,…)走专用适配器,自带海报 + 元数据
 - **YouTube、B 站、TikTok、X 及 1000+ 站点**走内置 yt-dlp 引擎
 - **无数据库、无 worker**:一个容器搞定 Web UI、任务队列、播放
 - **媒体库自动分类**到 成人 / 通用 两个挂载;应用内代理与 Cookie 管理(带实时验证)、
