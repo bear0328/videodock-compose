@@ -5,7 +5,13 @@
 ### Docs
 
 - **Discoverability**: bilingual (EN/CN) README enriched with supported-sites keywords (91porn, Pornhub, Bilibili, Douyin, YouTube, TikTok, X/Twitter, yt-dlp); public repo tagged with self-hosted / media-server / unraid / video-downloader topics for GitHub search.
-- **README language switcher — desktop-only**: the EN/CN toggle (`data-vd-switch` / `vdSetLang` + inline `<script>`, same implementation as `videodock`) works on desktop `github.com`, but **not on mobile `github.com` or the GitHub app** — the mobile renderer strips inline HTML tags (keeps text), so the `<style>` block shows as literal CSS text and the buttons are unclickable plain text. Documented as a known GitHub mobile-renderer limitation; no code change planned.
+- **README language switch → dual-file links**: the EN/CN toggle was an in-page inline
+  `<style>`/`<script>` switcher (`data-vd-switch` / `vdSetLang`, same as `videodock`) that worked
+  on desktop `github.com` but **broke on mobile** — the mobile renderer strips inline HTML tags
+  (keeps text), so the `<style>` block showed as literal CSS text and the buttons were
+  unclickable. Replaced with dual files `README.md` (EN) + `README_CN.md` (CN) linked at the top
+  (`**English** | [简体中文](README_CN.md)`). Works on desktop, mobile web, and the GitHub app
+  (reference: `bear0328/unraid-mobile-compose`).
 
 ## v2.2.5 — 2026-10-01
 
