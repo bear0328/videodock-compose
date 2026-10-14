@@ -1,5 +1,21 @@
 # videodock-compose
 
+<style>
+#vd-lang-switch { display: inline-flex; gap: 4px; align-items: center; margin: 8px 0 18px; padding: 4px; border: 1px solid #d0d7de; border-radius: 8px; background: #f6f8fa; }
+#vd-lang-switch .vd-label { font-size: 13px; color: #57606a; margin: 0 4px 0 2px; }
+#vd-lang-switch button { border: 0; background: transparent; padding: 6px 16px; font-size: 14px; line-height: 1.4; cursor: pointer; border-radius: 5px; color: #24292f; }
+#vd-lang-switch button:hover { background: #eaeef2; }
+#vd-lang-switch button.active { background: #1f883d; color: #fff; }
+#vd-lang-switch button.active:hover { background: #1a7f37; }
+</style>
+<div id="vd-lang-switch">
+  <span class="vd-label">语言</span>
+  <button type="button" id="vd-btn-en" class="active" onclick="vdSetLang('en')">🇬🇧 English</button>
+  <button type="button" id="vd-btn-zh" onclick="vdSetLang('zh')">🇨🇳 中文</button>
+</div>
+
+<div id="vd-en">
+
 Deployment presets for [videodock](https://github.com/bear0328/videodock) — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
 
@@ -130,6 +146,10 @@ with the same port / volume / environment settings as above.
 
 ---
 
+</div>
+
+<div id="vd-zh" style="display: none;">
+
 # videodock-compose（中文）
 
 [videodock](https://github.com/bear0328/videodock) 部署预设——多站点视频下载 + Web 播放平台,
@@ -250,3 +270,24 @@ docker compose up -d -f compose.yaml
 | YouTube/B 站 403 或跳登录页 | 配好下载代理;受限内容粘贴 Cookie 后点 **验证** |
 | 代理 `407 / Bad Gateway` | 换代理地址(或补认证)——用设置页 **验证** 确认连通 |
 | 视频能播但海报慢 | 海报经应用代流、走页面代理——在设置页调整 |
+</div>
+
+<script>
+(function () {
+  function apply(lang) {
+    var en = document.getElementById('vd-en');
+    var zh = document.getElementById('vd-zh');
+    if (en) en.style.display = lang === 'zh' ? 'none' : '';
+    if (zh) zh.style.display = lang === 'zh' ? '' : 'none';
+    var be = document.getElementById('vd-btn-en');
+    var bz = document.getElementById('vd-btn-zh');
+    if (be) be.classList.toggle('active', lang === 'en');
+    if (bz) bz.classList.toggle('active', lang === 'zh');
+    try { localStorage.setItem('vd-lang', lang); } catch (e) {}
+  }
+  window.vdSetLang = function (lang) { apply(lang); };
+  var saved = null;
+  try { saved = localStorage.getItem('vd-lang'); } catch (e) { saved = null; }
+  apply(saved === 'zh' ? 'zh' : 'en');
+})();
+</script>
