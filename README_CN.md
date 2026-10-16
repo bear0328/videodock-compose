@@ -2,7 +2,7 @@
 
 # videodock-compose（中文）
 
-[videodock](https://github.com/bear0328/videodock) 部署预设——多站点视频下载 + Web 播放平台,
+videodock 部署预设——多站点视频下载 + Web 播放平台,
 单容器(为 Unraid 设计)。
 
 **支持站点:** 91porn · Pornhub · Bilibili · 抖音(Douyin) · YouTube · TikTok · X/Twitter,以及通过 yt-dlp 支持的 500+ 站点——一个自托管媒体服务器与视频下载器,为 Unraid 设计。
@@ -85,8 +85,26 @@ environment:
 - **YouTube**:公开视频匿名可下;年龄限制 / 会员内容需登录 Cookie。
 - **B 站**:会员 / 高清源需要 `SESSDATA`(复制完整 cookie)。
 
-界面 **验证** 按钮会从容器实际访问各站点,返回 *有效 / 无效*。逐步提取指南(DevTools 与
-关键 token 清单)见 [主仓库 README](https://github.com/bear0328/videodock#cookie-怎么获取)。
+界面 **验证** 按钮会从容器实际访问各站点,返回 *有效 / 无效*,粘完即可确认,不用等
+下载失败才知道不对。
+
+### 怎么获取 Cookie
+
+videodock 要的是浏览器**原始 `Cookie` 请求头**——即浏览器实际发出的那串
+(`name=value; name2=value2; …`)。用 DevTools 提取:
+
+1. 在浏览器登录目标站点。
+2. 打开 DevTools(F12)→ **Network**(网络),刷新页面,点击任意一个访问该站点的请求。
+3. 在请求详情里找到 **Request Headers**(请求头),复制 `Cookie:` 这一行的完整值。
+4. 粘到 *设置* 里对应站点的框,按 **验证**。
+
+B 站也可以直接从 *Application → Cookies* 只复制这三个关键字段再拼起来:
+
+```text
+SESSDATA=…; bili_jct=…; dediuserid=…
+```
+
+`SESSDATA` 是最关键的 token;没有它只能拿到游客权限。
 
 ## 使用说明
 

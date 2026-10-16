@@ -1,6 +1,6 @@
 **English** | [简体中文](README_CN.md)
 
-Deployment presets for [videodock](https://github.com/bear0328/videodock) — a multi-site video
+Deployment presets for videodock — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
 
 **Supported sites:** 91porn · Pornhub · Bilibili · Douyin(抖音) · YouTube · TikTok · X/Twitter and 500+ more via yt-dlp — a self-hosted media server & video downloader for Unraid.
@@ -86,10 +86,32 @@ the same host path (they will create `adult/` and `general/` subdirectories unde
 - **YouTube**: public videos work anonymously; age-gated / members-only need a logged-in
   cookie.
 - **Bilibili**: member-only / high-quality streams need `SESSDATA` (copy the full cookie).
+- **Douyin**: public videos download with no cookies; the web API sits behind a bot
+  challenge, so the adapter uses the mobile share page instead. Only paste cookies if a
+  private or age-gated video ever fails.
 
 The in-app **Verify** button checks each site from the container and reports
-*Valid / Invalid*. Step-by-step extraction guides (DevTools screenshots & token lists)
-live in the [main repo README](https://github.com/bear0328/videodock#cookies-how-to-get-them).
+*Valid / Invalid*, so you can confirm a paste before downloading.
+
+### How to get a cookie
+
+videodock wants the **raw browser `Cookie` header** — exactly the string the browser
+sends (`name=value; name2=value2; …`). Extract it with DevTools:
+
+1. Log in to the site in your browser.
+2. Open DevTools (F12) → **Network**, reload the page, then click any request to the site.
+3. In the request details, open **Request Headers** and copy the entire value of the
+   `Cookie:` line.
+4. Paste it into the matching field under *Settings*, then press **Verify**.
+
+For Bilibili you can instead grab just the three essentials from *Application → Cookies*
+and join them:
+
+```text
+SESSDATA=…; bili_jct=…; dediuserid=…
+```
+
+`SESSDATA` is the key token — without it you only get guest-level access.
 
 ## Typical use
 
