@@ -7,24 +7,13 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
-## [Unreleased]
+## [2.7.2] — 2026-10-18
 
 ### Docs
 
 - **Removed Emby STRM mount**: dropped the `videodock` `/mnt/cache/strm/happy:/strm/happy:ro`
   volume — the app no longer carries the Emby STRM library browse/play feature (reverted to plain
   download + playback). Deployment preset now ships only media + appdata mounts.
-- **Discoverability**: bilingual (EN/CN) README enriched with supported-sites keywords (91porn, Pornhub, Bilibili, Douyin, YouTube, TikTok, X/Twitter, yt-dlp); public repo tagged with self-hosted / media-server / unraid / video-downloader topics for GitHub search.
-- **README language switch → dual-file links**: the EN/CN toggle was an in-page inline
-  `<style>`/`<script>` switcher (`data-vd-switch` / `vdSetLang`, same as `videodock`) that worked
-  on desktop `github.com` but **broke on mobile** — the mobile renderer strips inline HTML tags
-  (keeps text), so the `<style>` block showed as literal CSS text and the buttons were
-  unclickable. Replaced with dual files `README.md` (EN) + `README_CN.md` (CN) linked at the top
-  (`**English** | [简体中文](README_CN.md)`). Works on desktop, mobile web, and the GitHub app
-  (reference: `bear0328/unraid-mobile-compose`).
-- **Cookie guide folded into this repo**: the EN/CN README now carries the full "how to get a
-  cookie" extraction steps (DevTools → Network → Request Headers) instead of linking to the
-  private `videodock` repo, so public readers no longer hit a dead link.
 
 ## [2.8.0] — 2026-10-09
 
