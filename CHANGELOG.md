@@ -15,9 +15,9 @@ there is no separate entry.
   volume — the app no longer carries the Emby STRM library browse/play feature (reverted to plain
   download + playback). Deployment preset now ships only media + appdata mounts.
 
-## [2.8.0] — 2026-10-09
+## [2.7.1] — 2026-10-09
 
-- **Synced to app 2.8.0** (PWA installable to Mac Dock). No change to `compose.yaml`, env
+- **Synced to app 2.7.1** (PWA installable to Mac Dock). No change to `compose.yaml`, env
   vars, volumes, or deployment steps — version bumped to stay aligned with the app.
 
 ## [2.2.5] — 2026-10-01
