@@ -11,6 +11,9 @@ there is no separate entry.
 
 ### Docs
 
+- **Removed Emby STRM mount**: dropped the `videodock` `/mnt/cache/strm/happy:/strm/happy:ro`
+  volume — the app no longer carries the Emby STRM library browse/play feature (reverted to plain
+  download + playback). Deployment preset now ships only media + appdata mounts.
 - **Discoverability**: bilingual (EN/CN) README enriched with supported-sites keywords (91porn, Pornhub, Bilibili, Douyin, YouTube, TikTok, X/Twitter, yt-dlp); public repo tagged with self-hosted / media-server / unraid / video-downloader topics for GitHub search.
 - **README language switch → dual-file links**: the EN/CN toggle was an in-page inline
   `<style>`/`<script>` switcher (`data-vd-switch` / `vdSetLang`, same as `videodock`) that worked

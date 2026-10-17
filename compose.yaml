@@ -9,7 +9,6 @@ services:
       - /mnt/user/media/ori/91:/adult
       - /mnt/user/downloads/youtube:/general
       - /mnt/user/appdata/videodock/data:/appdata
-      - /mnt/cache/strm/happy:/strm/happy:ro
     environment:
       - VIDEODB_DATA=/
       - APPDATA=/appdata
