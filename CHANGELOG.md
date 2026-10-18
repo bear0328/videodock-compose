@@ -7,6 +7,15 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.7.3] — 2026-10-18
+
+### Docs
+
+- **Synced to app v2.7.3**: mobile player control bar fixes (bottom controls no longer pushed
+  off-screen on iOS Safari via `flex: 1 1 0` + `100dvh`) and removal of the redundant stop /
+  fullscreen buttons from the mobile player. `compose.yaml` deployment preset unchanged
+  (frontend-only app change).
+
 ## [2.7.2] — 2026-10-18
 
 ### Docs
