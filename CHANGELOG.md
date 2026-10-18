@@ -7,6 +7,15 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.7.4] — 2026-10-18
+
+### Docs
+
+- **Synced to app v2.7.4**: mobile "Download to Local" now saves to the Files app via file
+  share; a new download-feedback toast; PWA service worker made network-first so updates push
+  to phones again; theme light/dark toggle moved from the top bar into Settings (single-row
+  mobile layout). `compose.yaml` deployment preset unchanged (frontend-only app change).
+
 ## [2.7.3] — 2026-10-18
 
 ### Docs
