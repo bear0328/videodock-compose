@@ -7,6 +7,15 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.7.5] — 2026-10-18
+
+### Docs
+
+- **Synced to app v2.7.5**: PWA install button restored (added missing `/sw.js` and
+  `/icons/{name}` routes) and home-screen icon fixed — maskable icon full-bleed white so
+  the Mac Dock icon has no black border and iOS home screen shows no white-sticker
+  overlay. `compose.yaml` deployment preset unchanged (frontend-only app change).
+
 ## [2.7.4] — 2026-10-18
 
 ### Docs
