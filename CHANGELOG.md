@@ -6,6 +6,15 @@ Version numbers track the sibling app repo [videodock](https://github.com/bear03
 in lockstep. Entries here cover deployment / `compose.yaml` / README changes; when an app
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
+ 
+## [2.7.6] — 2026-10-19
+
+### Docs
+
+- **Synced to app v2.7.6**: downloaded filenames no longer keep URL percent-encoding —
+titles that yt-dlp / adapters still returned as UTF-8 URL-encoded strings (e.g.
+`%E8%B1%86...`) were saved verbatim; now they URL-decode to the real title before the
+on-disk name is built. `compose.yaml` deployment preset unchanged (app-only change).
 
 ## [2.7.5] — 2026-10-18
 
