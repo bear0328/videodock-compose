@@ -7,6 +7,16 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
  
+## [2.8.1] — 2026-10-22
+
+### Docs
+
+- **Synced to app v2.8.1**: "Completed" count now reflects only successfully
+  downloaded tasks — the sidebar "已完成" counter previously counted every entry
+  in the download history (including errored/cancelled tasks and duplicate
+  re-downloads); it now counts only tasks that reached the `done` state.
+  `compose.yaml` deployment preset unchanged (app-only change).
+
 ## [2.8.0] — 2026-10-22
 
 ### Docs
