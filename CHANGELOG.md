@@ -6,7 +6,16 @@ Version numbers track the sibling app repo [videodock](https://github.com/bear03
 in lockstep. Entries here cover deployment / `compose.yaml` / README changes; when an app
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
- 
+
+## [2.8.2] — 2026-10-22
+
+### Docs
+
+- **Synced to app v2.8.2:** PC "All" view was empty and duplicated the category
+  buttons — the sidebar now remains the single category-navigation entry point on
+  desktop (content-area Adult/General buttons hidden at viewport ≥ 641px), and the
+  previously-empty "All" view now merges all sites. Deployment preset unchanged.
+
 ## [2.8.1] — 2026-10-22
 
 ### Docs
