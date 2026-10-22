@@ -7,6 +7,17 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
  
+## [2.8.0] — 2026-10-22
+
+### Docs
+
+- **Synced to app v2.8.0**: 91porn embed / short links now supported — links of the
+  form `91.9p9.xyz/ev.php?VID=<token>` (and bare encrypted embed tokens) resolve to
+  the same video as their `91porn.com/view_video.php?viewkey=...` counterpart; the
+  adapter reads the numeric VID from the poster and reuses the main-site download
+  path, deduping both forms to one library entry. `compose.yaml` deployment preset
+  unchanged (app-only change).
+
 ## [2.7.6] — 2026-10-19
 
 ### Docs
