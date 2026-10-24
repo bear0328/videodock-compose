@@ -7,6 +7,14 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.8.3] — 2026-10-24
+
+### Docs
+
+- **Synced to app v2.8.3:** Desktop player gained a fullscreen button and the `f`
+  keyboard shortcut; iOS native playback now launches full-screen. Deployment preset
+  unchanged.
+
 ## [2.8.2] — 2026-10-22
 
 ### Docs
