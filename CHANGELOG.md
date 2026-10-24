@@ -7,6 +7,14 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.8.4] — 2026-10-25
+
+### Docs
+
+- **Synced to app v2.8.4:** Desktop fullscreen now fills the video itself instead
+  of the whole player overlay (which previously looked like the entire page went
+  fullscreen). Deployment preset unchanged.
+
 ## [2.8.3] — 2026-10-24
 
 ### Docs
