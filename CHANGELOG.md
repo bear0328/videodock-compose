@@ -7,7 +7,14 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
-## [2.9.0] — 2026-10-25
+## [2.9.1] — 2026-10-25
+
+### Changed
+
+- **Synced to app v2.9.1** — container now runs in Asia/Shanghai timezone and logs
+  carry Shanghai local time. The timezone is baked into the image (`TZ=Asia/Shanghai`),
+  so `compose.yaml` needs no change.
+
 
 ### Changed
 
