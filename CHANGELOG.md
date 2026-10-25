@@ -7,6 +7,17 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.9.0] — 2026-10-25
+
+### Changed
+
+- **Synced to app v2.9.0 — access password now local.** The app no longer reads
+  `VD_API_PASSWORD` from the compose environment; the password is set in the UI
+  (Settings → Access password) and persisted locally, defaulting to `123456`.
+  Removed the `VD_API_PASSWORD=${VD_API_PASSWORD}` line from `compose.yaml`, so the
+  password can no longer leak through the deployment env. The UI still requires a
+  password on every route except `/login` (a 30-day httpOnly session cookie).
+
 ## [2.8.4] — 2026-10-25
 
 ### Docs

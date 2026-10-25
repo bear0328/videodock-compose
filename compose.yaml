@@ -13,5 +13,4 @@ services:
       - VIDEODB_DATA=/
       - APPDATA=/appdata
       - PAGE_PROXY=http://192.168.6.111:7890
-      - VD_API_PASSWORD=${VD_API_PASSWORD}
     restart: unless-stopped
