@@ -7,6 +7,14 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.9.2] — 2026-10-26
+
+### Changed
+
+- **Synced to app v2.9.2** — container logs (`docker logs`) now carry Shanghai local
+  timestamps (uvicorn `--log-config` + `TZ=Asia/Shanghai`); `PyYAML` added to the image.
+  `compose.yaml` needs no change — both are baked into the image.
+
 ## [2.9.1] — 2026-10-25
 
 ### Changed
