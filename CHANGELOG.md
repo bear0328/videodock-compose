@@ -7,6 +7,15 @@ in lockstep. Entries here cover deployment / `compose.yaml` / README changes; wh
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.9.3] — 2026-10-26
+
+### Changed
+
+- **Timezone config moved into `compose.yaml`** — added `TZ=Asia/Shanghai` to the
+  `environment` block. The timezone is now set per-deployment instead of being baked into the
+  image, so changing it no longer requires a rebuild. `compose.yaml` itself is the only
+  deployment-preset change; the app image keeps only `tzdata`.
+
 ## [2.9.2] — 2026-10-26
 
 ### Changed
