@@ -6,6 +6,16 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.10.0] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.10.0** — the app release adds playback progress (“continue watching”),
+  a download preview, automatic retries for failed downloads and a share / quick-submit entry.
+  `compose.yaml` needs no change — the preset was already correct: the new playback state
+  lives in the existing `/appdata` mount, and `VD_MAX_RETRIES` is an optional override
+  (default `3`).
+
 ## [2.9.5] — 2026-11-01
 
 ### Changed
