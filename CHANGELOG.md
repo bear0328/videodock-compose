@@ -6,6 +6,15 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.9.5] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.9.5** — media URLs (video/poster) are no longer public: they now need the
+  session cookie or a short-lived signed token (`?k=…`), the way Emby passes `api_key` to
+  `/Videos/{id}/stream`. Anyone with a copied media link can no longer pull a video without the
+  access password. `compose.yaml` needs no change — the preset was already correct.
+
 ## [2.9.4] — 2026-10-31
 
 ### Changed
