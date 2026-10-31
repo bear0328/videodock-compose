@@ -2,10 +2,22 @@
 
 All notable changes to videodock-compose. Dates use the format YYYY-MM-DD.
 
-Version numbers track the sibling app repo [videodock](https://github.com/bear0328/videodock)
-in lockstep. Entries here cover deployment / `compose.yaml` / README changes; when an app
+Version numbers track the sibling app repo in lockstep. Entries here cover deployment / `compose.yaml` / README changes; when an app
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
+
+## [2.9.4] — 2026-10-31
+
+### Changed
+
+- **Synced to app v2.9.4** — the app release closes an unauthenticated-deletion hole, fixes
+  rename/move/delete on deployments that mount the libraries at `/adult` + `/general`, and
+  makes the deploy-test E2E actually assert (it had been reporting green while every probe
+  got a 302/401). `compose.yaml` needs no change — the preset was already correct.
+- **Removed a stale `VD_API_PASSWORD` line from the production compose** — the app stopped
+  reading a password from the environment in v2.9.0 (the password lives in the app's own
+  `settings.json`), so the variable was dead weight in the deployed file. It was never part
+  of this repository's `compose.yaml`.
 
 ## [2.9.3] — 2026-10-26
 
