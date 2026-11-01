@@ -6,6 +6,14 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.13.2] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.13.2** — the app release fixes category preloading and stale-response
+  handling, improves grid and queue rendering, and polishes theme and keyboard accessibility.
+  `compose.yaml` needs no change.
+
 ## [2.13.1] — 2026-11-01
 
 ### Changed
