@@ -3,7 +3,7 @@
 Deployment presets for videodock — a multi-site video
 downloader + web playback platform in a single Docker container (built for Unraid).
 
-**Supported sites:** 91porn · Pornhub · Bilibili · Douyin(抖音) · YouTube · TikTok · X/Twitter and 500+ more via yt-dlp — a self-hosted media server & video downloader for Unraid.
+**Supported sites:** 91porn · Pornhub · Bilibili · Douyin(抖音) · Kuaishou(快手) · Xiaohongshu(小红书) · YouTube · TikTok · X/Twitter and 500+ more via yt-dlp — a self-hosted media server & video downloader for Unraid.
 
 - **91-series** (91porn / bilithings, …) via a dedicated adapter — poster + metadata included
 - **YouTube, Bilibili, TikTok, X/Twitter and 1000+ other sites** via the built-in yt-dlp engine
@@ -14,18 +14,22 @@ downloader + web playback platform in a single Docker container (built for Unrai
 ## Quick start (Docker Compose)
 
 ```bash
-docker compose pull -f compose.yaml
-docker compose up -d -f compose.yaml
+docker compose -f compose.yaml pull
+docker compose -f compose.yaml up -d
 # open http://<server-ip>:8620
 ```
 
-On Unraid, place `compose.yaml` in `/boot/config/videodock/` and manage it with the Docker
+On Unraid, place `compose.yaml` in `/boot/config/docker/compose/videodock/` and manage it with the Docker
 Compose plugin:
 
 ```bash
-mkdir -p /boot/config/videodock /mnt/user/appdata/videodock/data
-cp compose.yaml /boot/config/videodock/
+mkdir -p /boot/config/docker/compose/videodock /mnt/user/appdata/videodock/data
+cp compose.yaml /boot/config/docker/compose/videodock/
 ```
+
+Keep the file on the boot flash and run compose there. Do **not** run `docker compose`
+from inside `/mnt/user` — that wedged the share's FUSE mount on 2026-11-01 (every path
+under `/mnt/user` stopped responding until the server was restarted).
 
 Adjust the two library paths in `compose.yaml` to your own directories (see below), then
 pull & start as shown.
@@ -127,8 +131,8 @@ SESSDATA=…; bili_jct=…; dediuserid=…
 ## Updating
 
 ```bash
-docker compose pull -f compose.yaml
-docker compose up -d -f compose.yaml
+docker compose -f compose.yaml pull
+docker compose -f compose.yaml up -d
 ```
 
 The library is scanned from disk, so all existing videos stay in place; task state and

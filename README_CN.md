@@ -5,7 +5,7 @@
 videodock 部署预设——多站点视频下载 + Web 播放平台,
 单容器(为 Unraid 设计)。
 
-**支持站点:** 91porn · Pornhub · Bilibili · 抖音(Douyin) · YouTube · TikTok · X/Twitter,以及通过 yt-dlp 支持的 500+ 站点——一个自托管媒体服务器与视频下载器,为 Unraid 设计。
+**支持站点:** 91porn · Pornhub · Bilibili · 抖音(Douyin) · 快手(Kuaishou) · 小红书(Xiaohongshu) · YouTube · TikTok · X/Twitter,以及通过 yt-dlp 支持的 500+ 站点——一个自托管媒体服务器与视频下载器,为 Unraid 设计。
 
 - **91 系(91porn / bilithings,…)走专用适配器,自带海报 + 元数据
 - **YouTube、B 站、TikTok、X 及 1000+ 站点**走内置 yt-dlp 引擎
@@ -16,17 +16,21 @@ videodock 部署预设——多站点视频下载 + Web 播放平台,
 ## 快速开始（Docker Compose）
 
 ```bash
-docker compose pull -f compose.yaml
-docker compose up -d -f compose.yaml
+docker compose -f compose.yaml pull
+docker compose -f compose.yaml up -d
 # 打开 http://<服务器IP>:8620
 ```
 
-Unraid 用户把 `compose.yaml` 放进 `/boot/config/videodock/`,用 Docker Compose 插件管理:
+Unraid 用户把 `compose.yaml` 放进 `/boot/config/docker/compose/videodock/`,用 Docker Compose 插件管理:
 
 ```bash
-mkdir -p /boot/config/videodock /mnt/user/appdata/videodock/data
-cp compose.yaml /boot/config/videodock/
+mkdir -p /boot/config/docker/compose/videodock /mnt/user/appdata/videodock/data
+cp compose.yaml /boot/config/docker/compose/videodock/
 ```
+
+compose 文件放在 boot 闪存上、也在那里执行。**不要**在 `/mnt/user` 里跑
+`docker compose`——2026-11-01 实测会把 share 的 FUSE 挂载打僵（`/mnt/user` 下所有路径
+读不动，只能重启服务器）。
 
 把 `compose.yaml` 里两个媒体库路径改成你自己的目录(见下),然后按上面 pull & start。
 
@@ -117,8 +121,8 @@ SESSDATA=…; bili_jct=…; dediuserid=…
 ## 更新
 
 ```bash
-docker compose pull -f compose.yaml
-docker compose up -d -f compose.yaml
+docker compose -f compose.yaml pull
+docker compose -f compose.yaml up -d
 ```
 
 媒体库从磁盘扫描,已有视频全部保留;任务状态与设置保存在 appdata 卷中。

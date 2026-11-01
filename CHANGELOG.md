@@ -6,6 +6,19 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.13.0] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.13.0** — the app release adds Kuaishou (快手) and Xiaohongshu
+  (小红书) adapters, including image notes that now show up in the library with a
+  cover and can be viewed and deleted from the UI.
+- **Compose lives in Unraid's standard location** — `compose.yaml` goes to
+  `/boot/config/docker/compose/videodock/` (boot flash) and compose runs there, not
+  inside `/mnt/user`: running compose in the share wedged its FUSE mount on
+  2026-11-01. README quick-start commands and the compose file's comments were
+  updated to match, and the supported-sites line now lists 快手 / 小红书.
+
 ## [2.12.0] — 2026-11-01
 
 ### Changed

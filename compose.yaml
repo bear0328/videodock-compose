@@ -1,17 +1,35 @@
----
+# videodock — 部署示例（与生产一致）
+#
+# 真相源：compose 仓 https://github.com/bear0328/videodock-compose
+#   那里是公开的部署预设仓，本文件只是随代码仓走的同内容副本。
+#   改了本文件 → 记得同步 compose 仓。
+#
+# 实机部署位置：**Unraid 标准 compose 路径**
+#   /boot/config/docker/compose/videodock/compose.yaml
+#   （在 boot 闪存上，**不要**放在 /mnt/user 里跑 compose —— shfs 挂载会被 compose
+#    打僵，2026-11-01 实测过：整个 /mnt/user 读不动，只能重启服务器。
+#    deploy-test.sh 每次部署都会把本文件推过去再执行 compose。）
+#
+# 关键点（照抄前先看）：
+#   - VIDEODB_DATA=/ : 两个媒体库直接挂到 /adult 和 /general，分类目录就是挂载点。
+#     app 会用 DATA_DIR/<category> 拼路径，所以 DATA_DIR=/ 时分类目录是 /adult、/general。
+#   - APPDATA=/appdata : tasks.json / settings.json / cookies / app.log 都在这里，
+#     必须挂持久卷，否则重启丢任务与设置（含访问密码）。
+#   - TZ=Asia/Shanghai : 容器日志时间戳（不再 baked 进镜像，改时区无需重建）。
+#   - 端口固定 8620（Dockerfile 里 uvicorn --port 8620，改端口要同时改镜像 CMD）。
 services:
   videodock:
     image: bear0328/videodock:latest
     container_name: videodock
     ports:
-      - "8620:8620"
+      - "8620:8620"        # web UI (下载 + 播放)
     volumes:
-      - /mnt/user/media/ori/91:/adult
-      - /mnt/user/downloads/youtube:/general
-      - /mnt/user/appdata/videodock/data:/appdata
+      - /mnt/user/media/ori/91:/adult          # adult 库（91 系）
+      - /mnt/user/downloads/youtube:/general   # general 库（yt-dlp 系站点）
+      - /mnt/user/appdata/videodock/data:/appdata  # 设置 / 任务 / cookie / 日志
     environment:
       - VIDEODB_DATA=/
       - APPDATA=/appdata
-      - PAGE_PROXY=http://192.168.6.111:7890
+      - PAGE_PROXY=http://192.168.6.111:7890   # 抓页面/封面用的代理
       - TZ=Asia/Shanghai
     restart: unless-stopped
