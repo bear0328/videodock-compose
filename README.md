@@ -85,37 +85,27 @@ the same host path (they will create `adult/` and `general/` subdirectories unde
 
 ## Cookies & login-gated content
 
-- **91-series**: public videos work without cookies; private videos need a login. Paste
-  the browser's raw `Cookie` header into *Settings → 91 series cookies*.
-- **YouTube**: public videos work anonymously; age-gated / members-only need a logged-in
-  cookie.
-- **Bilibili**: member-only / high-quality streams need `SESSDATA` (copy the full cookie).
-- **Douyin**: public videos download with no cookies; the web API sits behind a bot
-  challenge, so the adapter uses the mobile share page instead. Only paste cookies if a
-  private or age-gated video ever fails.
+- **91-series**: public videos work without cookies. There is no 91 cookie setting; page
+  access uses the configured page proxy and the `cn_CN` locale.
+- **YouTube**: public videos work anonymously; age-gated / members-only need a logged-in cookie.
+- **Bilibili**: member-only / high-quality streams need `SESSDATA` in the exported cookies.
+- **Douyin**: a valid login cookie is recommended for public and private videos because it
+  restores the mobile share page's server-rendered data. The default image has no Playwright fallback.
+- **Xiaohongshu**: public notes need no cookies; the setting is only for private notes.
 
 The in-app **Verify** button checks each site from the container and reports
 *Valid / Invalid*, so you can confirm a paste before downloading.
 
-### How to get a cookie
+### How to get cookies
 
-videodock wants the **raw browser `Cookie` header** — exactly the string the browser
-sends (`name=value; name2=value2; …`). Extract it with DevTools:
+videodock accepts **Netscape `cookies.txt` exports or Cookie-Editor JSON**, not a raw
+`name=value; …` Cookie request header.
 
 1. Log in to the site in your browser.
-2. Open DevTools (F12) → **Network**, reload the page, then click any request to the site.
-3. In the request details, open **Request Headers** and copy the entire value of the
-   `Cookie:` line.
-4. Paste it into the matching field under *Settings*, then press **Verify**.
+2. Export its cookies with "Get cookies.txt LOCALLY" or Cookie-Editor.
+3. Paste the exported contents into the matching field under *Settings*, then press **Verify**.
 
-For Bilibili you can instead grab just the three essentials from *Application → Cookies*
-and join them:
-
-```text
-SESSDATA=…; bili_jct=…; dediuserid=…
-```
-
-`SESSDATA` is the key token — without it you only get guest-level access.
+For Bilibili, `SESSDATA` is the key token — without it you only get guest-level access.
 
 ## Typical use
 

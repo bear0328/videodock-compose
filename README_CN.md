@@ -84,31 +84,26 @@ environment:
 
 ## Cookie 与登录内容
 
-- **91 系**:公开视频免 Cookie;私密视频需登录。把浏览器原始 `Cookie` 请求头粘到
-  *设置 → 91 系 Cookie*。
+- **91 系**:公开视频免 Cookie。没有 91 Cookie 设置框,页面访问走配置的页面代理与 `cn_CN` 语言会话。
 - **YouTube**:公开视频匿名可下;年龄限制 / 会员内容需登录 Cookie。
-- **B 站**:会员 / 高清源需要 `SESSDATA`(复制完整 cookie)。
+- **B 站**:会员 / 高清源需要导出 Cookie 中的 `SESSDATA`。
+- **抖音**:公开与私密视频都建议配置有效登录 Cookie,它能恢复移动版分享页的服务端渲染数据;
+  默认镜像不含 Playwright 回退。
+- **小红书**:公开笔记无需 Cookie,设置项仅用于私密笔记。
 
 界面 **验证** 按钮会从容器实际访问各站点,返回 *有效 / 无效*,粘完即可确认,不用等
 下载失败才知道不对。
 
 ### 怎么获取 Cookie
 
-videodock 要的是浏览器**原始 `Cookie` 请求头**——即浏览器实际发出的那串
-(`name=value; name2=value2; …`)。用 DevTools 提取:
+videodock 接受 **Netscape `cookies.txt` 导出内容或 Cookie-Editor JSON**,不支持直接粘贴
+`name=value; …` 原始 Cookie 请求头。
 
 1. 在浏览器登录目标站点。
-2. 打开 DevTools(F12)→ **Network**(网络),刷新页面,点击任意一个访问该站点的请求。
-3. 在请求详情里找到 **Request Headers**(请求头),复制 `Cookie:` 这一行的完整值。
-4. 粘到 *设置* 里对应站点的框,按 **验证**。
+2. 用 "Get cookies.txt LOCALLY" 或 Cookie-Editor 导出站点 Cookie。
+3. 把导出内容粘到 *设置* 里对应站点的框,按 **验证**。
 
-B 站也可以直接从 *Application → Cookies* 只复制这三个关键字段再拼起来:
-
-```text
-SESSDATA=…; bili_jct=…; dediuserid=…
-```
-
-`SESSDATA` 是最关键的 token;没有它只能拿到游客权限。
+B 站最关键的 token 是 `SESSDATA`;没有它只能拿到游客权限。
 
 ## 使用说明
 

@@ -6,6 +6,16 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.13.1] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.13.1** — the app release contains review fixes for media path validation,
+  download defaults, cancellation and secret-safe logging, and migrates project skills to Kimi Code.
+  `compose.yaml` needs no change.
+- Corrected the bilingual cookie guide: the app accepts Netscape `cookies.txt` or Cookie-Editor
+  JSON, has no 91-series cookie setting, and recommends a login cookie for Douyin.
+
 ## [2.13.0] — 2026-11-01
 
 ### Changed
