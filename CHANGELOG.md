@@ -6,6 +6,15 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.12.0] — 2026-11-01
+
+### Changed
+
+- **Synced to app v2.12.0** — the app release adds download option groups with named
+  presets, subtitles / chapters / SponsorBlock marks, batch operations with tags, and a
+  library disk-usage readout with an optional quota warning. `compose.yaml` needs no
+  change — everything new lives in the existing `/appdata` mount and the media library.
+
 ## [2.11.0] — 2026-11-01
 
 ### Changed
