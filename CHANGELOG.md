@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.2] — 2026-11-07
+
+### Changed
+
+- **Synced to app v2.14.2** — touch devices without hover open an adult poster full screen before playback. Desktop hover-to-reveal and click-to-play are unchanged. `compose.yaml` needs no change.
+
 ## [2.14.1] — 2026-11-07
 
 ### Changed
