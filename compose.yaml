@@ -13,6 +13,9 @@
 # 关键点（照抄前先看）：
 #   - VIDEODB_DATA=/ : 两个媒体库直接挂到 /adult 和 /general，分类目录就是挂载点。
 #     app 会用 DATA_DIR/<category> 拼路径，所以 DATA_DIR=/ 时分类目录是 /adult、/general。
+#   - /strm/happy/91 : 只读挂载 /mnt/cache/strm/happy/91，和 /adult（ori/91）是同一批 91。
+#     容器内路径等于 VD_EMBY_STRM_PREFIX。核对只认这个目录里的 .strm。
+#     /mnt/user/strm 是指向 /mnt/cache/strm 的符号链接，挂载用实体目录。
 #   - APPDATA=/appdata : tasks.json / settings.json / cookies / app.log 都在这里，
 #     必须挂持久卷，否则重启丢任务与设置（含访问密码）。
 #   - TZ=Asia/Shanghai : 容器日志时间戳（不再 baked 进镜像，改时区无需重建）。
@@ -25,6 +28,7 @@ services:
       - "8620:8620"        # web UI (下载 + 播放)
     volumes:
       - /mnt/user/media/ori/91:/adult          # adult 库（91 系）
+      - /mnt/cache/strm/happy/91:/strm/happy/91:ro  # 与 /adult 同一批 91，只读
       - /mnt/user/downloads/youtube:/general   # general 库（yt-dlp 系站点）
       - /mnt/user/appdata/videodock/data:/appdata  # 设置 / 任务 / cookie / 日志
     environment:
@@ -34,6 +38,7 @@ services:
       - TZ=Asia/Shanghai
       # Emby 播放。值来自 compose 目录下的 .env，不写进仓库。
       - VD_EMBY_URL=${VD_EMBY_URL:-}
+      - VD_EMBY_STREAM_URL=${VD_EMBY_STREAM_URL:-}
       - VD_EMBY_KEY=${VD_EMBY_KEY:-}
       - VD_EMBY_USER_ID=${VD_EMBY_USER_ID:-}
       - VD_EMBY_STRM_PREFIX=${VD_EMBY_STRM_PREFIX:-/strm/happy/91/}

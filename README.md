@@ -52,14 +52,21 @@ the *adult* mount, everything else (yt-dlp sites) lands in the *general* mount. 
 ```yaml
 volumes:
   - /mnt/user/media/ori/91:/adult          # 91-series library
+  - /mnt/cache/strm/happy/91:/strm/happy/91:ro  # same 91 set, read-only strm
   - /mnt/user/downloads/youtube:/general   # general-site library (yt-dlp)
   - /mnt/user/appdata/videodock/data:/appdata
 environment:
   - VIDEODB_DATA=/
 ```
 
-Both volumes must exist and be writable. To keep everything in one tree, map both mounts to
+Both library volumes must exist and be writable. To keep everything in one tree, map both mounts to
 the same host path (they will create `adult/` and `general/` subdirectories under it).
+
+`/strm/happy/91` is not a third library. It is the read-only strm directory for the adult
+library, mounted from `/mnt/cache/strm/happy/91`. `/mnt/user/strm` is a symlink to
+`/mnt/cache/strm`, so the mount uses the real directory. The container path is
+`VD_EMBY_STRM_PREFIX`. A local adult item matches only when a `.strm` file of the same
+name is in that directory.
 
 ## compose.yaml reference
 
@@ -68,6 +75,7 @@ the same host path (they will create `adult/` and `general/` subdirectories unde
 | Mount | Purpose |
 | --- | --- |
 | `/adult` | Adult library (91-series) |
+| `/strm/happy/91` | Read-only strm directory for that adult library |
 | `/general` | General library (all yt-dlp sites) |
 | `/appdata` | Metadata, task queue, settings, logs — survives image updates |
 
@@ -83,9 +91,10 @@ the same host path (they will create `adult/` and `general/` subdirectories unde
 | `YTDP_PROXY` | follows `PAGE_PROXY` | Proxy for the yt-dlp engine (YouTube, Bilibili, …) |
 | `YTDP_COOKIES` | *(empty)* | Netscape `cookies.txt` path — optional alternative to the in-app cookie fields |
 | `VD_EMBY_URL` | *(empty)* | Emby base URL. Empty disables Emby playback and keeps local files |
+| `VD_EMBY_STREAM_URL` | *(empty, uses `VD_EMBY_URL`)* | Proxy that 302s `/Videos/{id}/stream` after PlaybackInfo. The media source id is not the item id. No redirect keeps VOD HLS |
 | `VD_EMBY_KEY` | *(empty)* | Emby API key. Put it in the compose directory `.env`, not in `compose.yaml` |
 | `VD_EMBY_USER_ID` | *(empty)* | Emby user id. Empty selects an administrator |
-| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | Only strm files under this path are eligible for adult-library matching |
+| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | Container path of the read-only strm mount. It must match the Emby item path. Only `.strm` names in this directory match the adult library |
 
 ## Cookies & login-gated content
 

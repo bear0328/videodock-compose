@@ -51,14 +51,19 @@ videodock 会把每个下载自动分类到两个媒体库之一:**91 系**链�
 ```yaml
 volumes:
   - /mnt/user/media/ori/91:/adult          # 91 系媒体库
+  - /mnt/cache/strm/happy/91:/strm/happy/91:ro  # 同一批 91 的 strm，只读
   - /mnt/user/downloads/youtube:/general   # 通用站点媒体库(yt-dlp)
   - /mnt/user/appdata/videodock/data:/appdata
 environment:
   - VIDEODB_DATA=/
 ```
 
-两个卷都必须存在且可写。想全部放一个目录树:把两个挂载指到同一宿主机路径即可(会自动
+两个媒体库卷都必须存在且可写。想全部放一个目录树:把两个挂载指到同一宿主机路径即可(会自动
 在其下建 `adult/` 与 `general/` 子目录)。
+
+`/strm/happy/91` 不是第三个媒体库。它是成人库对应的只读 strm 目录，来自
+`/mnt/cache/strm/happy/91`。`/mnt/user/strm` 是指向 `/mnt/cache/strm` 的符号链接，所以挂载用实体目录。
+容器内路径就是 `VD_EMBY_STRM_PREFIX`。本地成人条目只有在这个目录里有同名 `.strm` 时才算对上。
 
 ## compose.yaml 说明
 
@@ -67,6 +72,7 @@ environment:
 | 挂载 | 用途 |
 | --- | --- |
 | `/adult` | 成人媒体库(91 系) |
+| `/strm/happy/91` | 成人库对应的只读 strm 目录 |
 | `/general` | 通用媒体库(所有 yt-dlp 站点) |
 | `/appdata` | 元数据、任务队列、设置、日志——镜像升级后保留 |
 
@@ -82,9 +88,10 @@ environment:
 | `YTDP_PROXY` | 跟随 `PAGE_PROXY` | yt-dlp 引擎(YouTube、B 站…)的代理 |
 | `YTDP_COOKIES` | *(空)* | Netscape `cookies.txt` 路径——应用内 Cookie 字段的可选替代 |
 | `VD_EMBY_URL` | *(空)* | Emby 地址。留空则关闭 Emby 播放,继续播本地文件 |
+| `VD_EMBY_STREAM_URL` | *(空，跟随 `VD_EMBY_URL`)* | 对 `/Videos/{id}/stream` 返回 302 的代理。媒体源 Id 来自 PlaybackInfo，不是条目 Id。没有 302 时仍走点播 HLS |
 | `VD_EMBY_KEY` | *(空)* | Emby API 密钥。写在 compose 目录的 `.env`,不要写进 `compose.yaml` |
 | `VD_EMBY_USER_ID` | *(空)* | Emby 用户 Id。留空时自动选管理员 |
-| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | 只有这个路径下的 strm 才会参与成人库对齐 |
+| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | 只读 strm 挂载的容器内路径，必须与 Emby 条目路径一致。只认这个目录里的 `.strm` 文件名 |
 
 ## Cookie 与登录内容
 

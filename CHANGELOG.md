@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.1] — 2026-11-07
+
+### Changed
+
+- **Synced to app v2.14.1** — the adult strm directory is mounted read-only next to the adult library. Matching uses the `.strm` names in that directory. Optional `VD_EMBY_STREAM_URL` points at a proxy that redirects `/Videos/{id}/stream` to the cloud file. Leave it empty to keep VOD HLS through `VD_EMBY_URL`.
+
 ## [2.14.0] — 2026-11-07
 
 ### Changed
