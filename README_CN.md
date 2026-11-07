@@ -81,6 +81,10 @@ environment:
 | `CDN_PROXY` | 跟随 `PAGE_PROXY` | 91 CDN 视频流代理——通常远快于直连;设 `""` 强制直连 |
 | `YTDP_PROXY` | 跟随 `PAGE_PROXY` | yt-dlp 引擎(YouTube、B 站…)的代理 |
 | `YTDP_COOKIES` | *(空)* | Netscape `cookies.txt` 路径——应用内 Cookie 字段的可选替代 |
+| `VD_EMBY_URL` | *(空)* | Emby 地址。留空则关闭 Emby 播放,继续播本地文件 |
+| `VD_EMBY_KEY` | *(空)* | Emby API 密钥。写在 compose 目录的 `.env`,不要写进 `compose.yaml` |
+| `VD_EMBY_USER_ID` | *(空)* | Emby 用户 Id。留空时自动选管理员 |
+| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | 只有这个路径下的 strm 才会参与成人库对齐 |
 
 ## Cookie 与登录内容
 

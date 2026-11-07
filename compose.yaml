@@ -32,4 +32,9 @@ services:
       - APPDATA=/appdata
       - PAGE_PROXY=http://192.168.6.111:7890   # 抓页面/封面用的代理
       - TZ=Asia/Shanghai
+      # Emby 播放。值来自 compose 目录下的 .env，不写进仓库。
+      - VD_EMBY_URL=${VD_EMBY_URL:-}
+      - VD_EMBY_KEY=${VD_EMBY_KEY:-}
+      - VD_EMBY_USER_ID=${VD_EMBY_USER_ID:-}
+      - VD_EMBY_STRM_PREFIX=${VD_EMBY_STRM_PREFIX:-/strm/happy/91/}
     restart: unless-stopped

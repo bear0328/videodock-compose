@@ -6,6 +6,15 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.0] — 2026-11-07
+
+### Changed
+
+- **Synced to app v2.14.0** — the adult library can match Emby strm items and play them as
+  VOD HLS through videodock. Optional `VD_EMBY_URL`, `VD_EMBY_KEY`, `VD_EMBY_USER_ID` and
+  `VD_EMBY_STRM_PREFIX` are read from the compose directory `.env`. Leave them empty to keep
+  the previous local-file playback. The key is not written into `compose.yaml`.
+
 ## [2.13.4] — 2026-11-07
 
 ### Changed

@@ -82,6 +82,10 @@ the same host path (they will create `adult/` and `general/` subdirectories unde
 | `CDN_PROXY` | follows `PAGE_PROXY` | Proxy for 91 CDN video streams — often much faster than direct. Set to `""` to force direct |
 | `YTDP_PROXY` | follows `PAGE_PROXY` | Proxy for the yt-dlp engine (YouTube, Bilibili, …) |
 | `YTDP_COOKIES` | *(empty)* | Netscape `cookies.txt` path — optional alternative to the in-app cookie fields |
+| `VD_EMBY_URL` | *(empty)* | Emby base URL. Empty disables Emby playback and keeps local files |
+| `VD_EMBY_KEY` | *(empty)* | Emby API key. Put it in the compose directory `.env`, not in `compose.yaml` |
+| `VD_EMBY_USER_ID` | *(empty)* | Emby user id. Empty selects an administrator |
+| `VD_EMBY_STRM_PREFIX` | `/strm/happy/91/` | Only strm files under this path are eligible for adult-library matching |
 
 ## Cookies & login-gated content
 
