@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.3] — 2026-11-07
+
+### Changed
+
+- **Synced to app v2.14.3** — failed and cancelled downloads keep their partial files and can continue from the library history. `compose.yaml` needs no change.
+
 ## [2.14.2] — 2026-11-07
 
 ### Changed
