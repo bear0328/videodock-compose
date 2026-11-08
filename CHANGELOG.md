@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.10] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.10** — Fullscreen playback now targets the player container, keeping keyboard shortcuts, custom controls and toast feedback usable in fullscreen. `compose.yaml` needs no change.
+
 ## [2.14.9] — 2026-11-08
 
 ### Changed
