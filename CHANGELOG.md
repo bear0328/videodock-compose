@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.7] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.7** — Xiaohongshu cookie validation now checks the site's login state instead of always failing, and the first paste no longer errors when the cookie directory is absent. `compose.yaml` needs no change.
+
 ## [2.14.6] — 2026-11-08
 
 ### Changed
