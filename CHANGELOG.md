@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.4] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.4** — the download queue removes a task and its unfinished files, cloud-backed Emby playback is proxied with Range support on mobile, and the quality CI self-test runs without a local virtualenv. `compose.yaml` needs no change.
+
 ## [2.14.3] — 2026-11-07
 
 ### Changed
