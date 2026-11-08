@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.5] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.5** — GitHub quality CI now uses the Chrome path supplied by `setup-chrome`, so the UI self-test runs on Linux runners. `compose.yaml` needs no change.
+
 ## [2.14.4] — 2026-11-08
 
 ### Changed
