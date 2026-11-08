@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.11] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.11** — Opening a video now enters fullscreen automatically; desktop can return to a windowed player with `f` / Esc, while phones have fullscreen only and closing fullscreen closes the player. `compose.yaml` needs no change.
+
 ## [2.14.10] — 2026-11-08
 
 ### Changed
