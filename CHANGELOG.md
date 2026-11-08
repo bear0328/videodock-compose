@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.8] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.8** — Emby / 115 direct playback now recovers from short-lived cloud 403s (fresh signed link, one retry, HLS fallback) and the player offers a visible retry. `compose.yaml` needs no change.
+
 ## [2.14.7] — 2026-11-08
 
 ### Changed
