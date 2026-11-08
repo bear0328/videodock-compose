@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.6] — 2026-11-08
+
+### Changed
+
+- **Synced to app v2.14.6** — the player now waits for a click before playing, keyboard shortcuts work regardless of focus, and failed playback shows a visible retry. `compose.yaml` needs no change.
+
 ## [2.14.5] — 2026-11-08
 
 ### Changed
