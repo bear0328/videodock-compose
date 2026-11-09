@@ -6,6 +6,12 @@ Version numbers track the sibling app repo in lockstep. Entries here cover deplo
 release does not touch the deployment preset, the version still bumps to stay aligned but
 there is no separate entry.
 
+## [2.14.13] — 2026-11-09
+
+### Changed
+
+- **Synced to app v2.14.13** — The touch poster preview layer is gone: adult covers stay blurred on touch devices, and a tap opens the native `<video controls>` player directly. `compose.yaml` needs no change.
+
 ## [2.14.12] — 2026-11-08
 
 ### Changed
